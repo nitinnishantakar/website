@@ -8,7 +8,7 @@ app.get("/", (request, response) => {
 })
 
 app.get("/website", (a, b) => {
-    b.send(fs.readFileSync("./23/twentythree.html", "utf-8"))
+    b.send(fs.readFileSync("./24/twentyfour.html", "utf-8"))
 })
 
 app.listen(port, () => {

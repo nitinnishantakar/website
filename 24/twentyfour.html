@@ -35,23 +35,27 @@
                 0px 15px 15px rgba(0, 0, 0, 0.3),
                 inset 0px 15px 15px rgba(0, 0, 0, 0.3);
         }
-        .dis{
+
+        .dis {
             position: absolute;
             height: 300px;
             width: 300px;
-            
+
         }
-        #hr{
+
+        #hr {
             width: 4px;
-            height: 60px;
+            height: 50px;
             background-color: white;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -100%);
             transform-origin: bottom;
+            display: none;
         }
-        #he{
+
+        #he {
             width: 10px;
             height: 10px;
             background-color: white;
@@ -61,9 +65,11 @@
             transform: translate(-50%, -50%);
             border-radius: 2000px;
             z-index: 10;
+            display: none;
         }
-        #mn{
-            height: 60px;
+
+        #mn {
+            height: 75px;
             width: 3px;
             display: block;
             position: absolute;
@@ -72,8 +78,10 @@
             transform: translate(-50%, -100%);
             transform-origin: bottom;
             background-color: rgb(1, 23, 119);
+            display: none;
         }
-        #sc{
+
+        #sc {
             height: 90px;
             width: 1px;
             display: block;
@@ -83,6 +91,7 @@
             transform: translate(-50%, -100%);
             transform-origin: bottom;
             background-color: red;
+            display: none;
         }
     </style>
 </head>
@@ -105,17 +114,24 @@
     <script>
         setInterval(() => {
             var datea = new Date()
-        var houra = datea.getHours()
-        var mina = datea.getMinutes()
-        var seca = datea.getSeconds()
-        var a = document.getElementById("hr")
-        var b = document.getElementById("mn")
-        var c = document.getElementById("sc")
-        a.style.transform = "translate(-50%, -100%) "+"rotate("+30*houra+"deg)"
-        b.style.transform = "translate(-50%, -100%) "+"rotate("+6*mina+"deg)"
-        c.style.transform = "translate(-50%, -100%) "+"rotate("+6*seca+"deg)"
-        }, 0);
-        
+            var houra = datea.getHours()
+            var mina = datea.getMinutes()
+            var seca = datea.getSeconds()
+            var a = document.getElementById("hr")
+            var b = document.getElementById("mn")
+            var c = document.getElementById("sc")
+            var d = document.getElementById("he")
+            var inputa = mina * .5+30 * houra
+            var inputb = seca * .1+6 * mina
+            var inputc = 6 * seca
+            a.style.transform = "translate(-50%, -100%) " + "rotate(" + inputa + "deg)"
+            b.style.transform = "translate(-50%, -100%) " + "rotate(" + inputb + "deg)"
+            c.style.transform = "translate(-50%, -100%) " + "rotate(" + inputc + "deg)"
+            a.style.display = "block"
+            b.style.display = "block"
+            c.style.display = "block"
+            d.style.display = "block"
+        }, 1);
     </script>
 </body>
 
