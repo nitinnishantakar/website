@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: #091921;
+        }
+
+        #clock {
+            height: 300px;
+            width: 300px;
+            border-radius: 2000px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: url(clock.png);
+            background-size: cover;
+            transform: translate(-50%, -50%);
+            box-shadow:
+                0px -15px 15px rgba(255, 255, 255, 0.05),
+                inset 0px -15px 15px rgba(255, 255, 255, 0.05),
+                0px 15px 15px rgba(0, 0, 0, 0.3),
+                inset 0px 15px 15px rgba(0, 0, 0, 0.3);
+        }
+        .dis{
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            
+        }
+        #hr{
+            width: 4px;
+            height: 60px;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+        }
+        #he{
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2000px;
+            z-index: 10;
+        }
+        #mn{
+            height: 60px;
+            width: 3px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            background-color: rgb(1, 23, 119);
+        }
+        #sc{
+            height: 90px;
+            width: 1px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="hole" class="dis">
+            <div id="he"></div>
+        </div>
+        <div id="hor" class="dis">
+            <div id="hr" class="nid"></div>
+        </div>
+        <div id="min" class="dis">
+            <div id="mn" class="nid"></div>
+        </div>
+        <div id="sec" class="dis">
+            <div id="sc" class="nid"></div>
+        </div>
+    </div>
+    <script>
+        setInterval(() => {
+            var datea = new Date()
+        var houra = datea.getHours()
+        var mina = datea.getMinutes()
+        var seca = datea.getSeconds()
+        var a = document.getElementById("hr")
+        var b = document.getElementById("mn")
+        var c = document.getElementById("sc")
+        a.style.transform = "translate(-50%, -100%) "+"rotate("+30*houra+"deg)"
+        b.style.transform = "translate(-50%, -100%) "+"rotate("+6*mina+"deg)"
+        c.style.transform = "translate(-50%, -100%) "+"rotate("+6*seca+"deg)"
+        }, 0);
+        
+    </script>
+</body>
+
+</html>

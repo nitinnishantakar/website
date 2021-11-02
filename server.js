@@ -1,9 +1,14 @@
+var fs = require('fs');
 var express = require('express')
 var app = express();
 var port = process.env.PORT || 3000;
 
 app.get("/", (request, response) => {
 	response.send("this is nitin");
+})
+
+app.get("/website", (a, b) => {
+    b.send(fs.readFileSync("./23/twentythree.html", "utf-8"))
 })
 
 app.listen(port, () => {

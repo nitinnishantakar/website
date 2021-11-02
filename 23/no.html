@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: #091921;
+        }
+
+        #clock {
+            height: 300px;
+            width: 300px;
+            border-radius: 2000px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            background-image: ;
+            background-size: cover;
+            transform: translate(-50%, -50%);
+            box-shadow:
+                0px -15px 15px rgba(255, 255, 255, 0.05),
+                inset 0px -15px 15px rgba(255, 255, 255, 0.05),
+                0px 15px 15px rgba(0, 0, 0, 0.3),
+                inset 0px 15px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .dis {
+            position: absolute;
+            height: 300px;
+            width: 300px;
+
+        }
+
+        #hr {
+            width: 4px;
+            height: 50px;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            display: none;
+            z-index: 9;
+        }
+
+        #he {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2000px;
+            z-index: 10;
+            display: none;
+        }
+
+        #mn {
+            height: 75px;
+            width: 3px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            background-color: rgb(1, 23, 119);
+            display: none;
+            z-index: 8;
+        }
+
+        #sc {
+            height: 90px;
+            width: 1px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+            transform-origin: bottom;
+            background-color: red;
+            display: none;
+            z-index: 7;
+        }
+
+        .num {
+            position: absolute;
+            font-size: 25px;
+            color: rgb(119, 119, 119);
+            font-family: sans-serif;
+            font-weight: 600;
+        }
+
+        #a {
+            left: 50%;
+            transform: translate(-63.5%);
+            top: 7%;
+        }
+
+        #d {
+            left: 90%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+        }
+
+        #j {
+            left: 10%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+        }
+
+        #g {
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 90%;
+        }
+
+        .numb {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            text-align: center;
+        }
+
+        .numbspan {
+            height: 15px;
+            width: 4px;
+            background-color: rgb(119, 119, 119);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10%;
+        }
+
+        #b {
+            transform: rotate(30deg);
+        }
+
+        #c {
+            transform: rotate(60deg);
+        }
+
+        #e {
+            transform: rotate(120deg);
+        }
+
+        #f {
+            transform: rotate(150deg);
+        }
+
+        #h {
+            transform: rotate(210deg);
+        }
+
+        #i {
+            transform: rotate(240deg);
+        }
+
+        #k {
+            transform: rotate(300deg);
+        }
+
+        #l {
+            transform: rotate(330deg);
+        }
+
+        #button {
+            position: absolute;
+            left: 50%;
+            top: 85%;
+            transform: translate(-50%, -50%);
+            appearance: none;
+            background-color: white;
+            height: 30px;
+            width: 60px;
+            border-radius: 200px;
+            outline: none;
+            overflow: hidden;
+
+        }
+
+        #button::before {
+            content: '';
+            border-radius: 100px;
+            height: 25px;
+            width: 25px;
+            background-color: #091921;
+            display: block;
+            position: absolute;
+            top: 28%;
+            transform: translate(0%, -25%);
+            left: 5%;
+            transition: all .25s linear;
+        }
+
+        #button::after {
+            content: '';
+            border-radius: 100px;
+            height: 25px;
+            width: 25px;
+            background-color: #091921;
+            display: block;
+            position: absolute;
+            top: 28%;
+            transform: translate(0%, -25%);
+            left: 100%;
+            transition: all .25s linear;
+        }
+
+        #button:checked::before {
+            background-color: white;
+            left: -50%;
+        }
+
+        #button:checked::after {
+            background-color: white;
+            left: 50%;
+        }
+
+        #button:checked {
+            background-color: #091921;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="a" class="num">12</div>
+        <div id="b" class="numb">
+            <div id="bspan" class="numbspan"></div>
+        </div>
+        <div id="c" class="numb">
+            <div id="cspan" class="numbspan"></div>
+        </div>
+        <div id="d" class="num">3</div>
+        <div id="e" class="numb">
+            <div id="espan" class="numbspan"></div>
+        </div>
+        <div id="f" class="numb">
+            <div id="fspan" class="numbspan"></div>
+        </div>
+        <div id="g" class="num">6</div>
+        <div id="h" class="numb">
+            <div id="hspan" class="numbspan"></div>
+        </div>
+        <div id="i" class="numb">
+            <div id="ispan" class="numbspan"></div>
+        </div>
+        <div id="j" class="num">9</div>
+        <div id="k" class="numb">
+            <div id="kspan" class="numbspan"></div>
+        </div>
+        <div id="l" class="numb">
+            <div id="lspan" class="numbspan"></div>
+        </div>
+        <div id="hole" class="dis">
+            <div id="he"></div>
+        </div>
+        <div id="hor" class="dis">
+            <div id="hr" class="nid"></div>
+        </div>
+        <div id="min" class="dis">
+            <div id="mn" class="nid"></div>
+        </div>
+        <div id="sec" class="dis">
+            <div id="sc" class="nid"></div>
+        </div>
+    </div>
+    <input type="checkbox" id="button" onclick="f2()">
+    <script>
+        var a = document.getElementById("hr")
+        var b = document.getElementById("mn")
+        var c = document.getElementById("sc")
+        var d = document.getElementById("he")
+        var body = document.querySelector("body")
+        var numa = document.querySelector("#a")
+        var numb = document.querySelector("#bspan")
+        var numc = document.querySelector("#cspan")
+        var numd = document.querySelector("#d")
+        var nume = document.querySelector("#espan")
+        var numf = document.querySelector("#fspan")
+        var numg = document.querySelector("#g")
+        var numh = document.querySelector("#hspan")
+        var numi = document.querySelector("#ispan")
+        var numj = document.querySelector("#j")
+        var numk = document.querySelector("#kspan")
+        var numl = document.querySelector("#lspan")
+        var body = document.querySelector("body")
+        var clock = document.getElementById("clock")
+        setInterval(() => {
+            var datea = new Date()
+            var houra = datea.getHours()
+            var mina = datea.getMinutes()
+            var seca = datea.getSeconds()
+            var inputa = mina * .5+30 * houra
+            var inputb = seca * .1+6 * mina
+            var inputc = 6 * seca
+            a.style.transform = "translate(-50%, -100%) " + "rotate(" + inputa + "deg)"
+            b.style.transform = "translate(-50%, -100%) " + "rotate(" + inputb + "deg)"
+            c.style.transform = "translate(-50%, -100%) " + "rotate(" + inputc + "deg)"
+            // console.log(b.style.transform)
+            a.style.display = "block"
+            b.style.display = "block"
+            c.style.display = "block"
+            d.style.display = "block"
+        }, 0);
+        var button = document.getElementById("button")
+
+
+        function f2() {
+            if (button.checked) {
+                body.style.backgroundColor = "rgb(119,119,119)"
+                numa.style.color = "#091921"
+                numb.style.backgroundColor = "#091921"
+                numc.style.backgroundColor = "#091921"
+                numd.style.color = "#091921"
+                nume.style.backgroundColor = "#091921"
+                numf.style.backgroundColor = "#091921"
+                numg.style.color = "#091921"
+                numh.style.backgroundColor = "#091921"
+                numi.style.backgroundColor = "#091921"
+                numj.style.color = "#091921"
+                numk.style.backgroundColor = "#091921"
+                numl.style.backgroundColor = "#091921"
+                clock.style.boxShadow = "0px -15px 15px rgba(0,0,0,.3), inset 0px -15px 15px rgba(0,0,0,.3), 0px 15px 15px rgba(225,225,225,.05),inset 0px 15px 15px rgba(225,225,225,.05)"
+                a.style.backgroundColor = "#091921"
+            }
+            else{
+                body.style.backgroundColor = "#091921"
+                numa.style.color = "rgb(119,119,119)"
+                numb.style.backgroundColor = "rgb(119,119,119)"
+                numc.style.backgroundColor = "rgb(119,119,119)"
+                numd.style.color = "rgb(119,119,119)"
+                nume.style.backgroundColor = "rgb(119,119,119)"
+                numf.style.backgroundColor = "rgb(119,119,119)"
+                numg.style.color = "rgb(119,119,119)"
+                numh.style.backgroundColor = "rgb(119,119,119)"
+                numi.style.backgroundColor = "rgb(119,119,119)"
+                numj.style.color = "rgb(119,119,119)"
+                numk.style.backgroundColor = "rgb(119,119,119)"
+                numl.style.backgroundColor = "rgb(119,119,119)"
+                clock.style.boxShadow = "0px -15px 15px rgba(0,0,0,.3), inset 0px -15px 15px rgba(0,0,0,.3), 0px 15px 15px rgba(225,225,225,.05),inset 0px 15px 15px rgba(225,225,225,.05)"
+                a.style.backgroundColor = "rgb(119,119,119)"
+            }
+        }
+    </script>
+</body>
+
+</html>

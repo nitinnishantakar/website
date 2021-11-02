@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgb(4, 122, 0);
+            text-shadow: 0 0 5px rgb(8, 100, 0);
+            font-size: 20px;
+        }
+
+        .scre {
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            position: absolute;
+            display: none;
+        }
+
+        #gate {
+            display: block;
+        }
+
+        .gate {
+            height: 20px;
+            background-color: transparent;
+            outline: none;
+            border: 0px solid white;
+            color: rgb(4, 122, 0);
+            text-shadow: 0 0 5px rgb(8, 100, 0);
+            font-size: 30px;
+            position: absolute;
+            left: 9%;
+        }
+
+        #user {
+            top: 18%;
+        }
+
+        #pass {
+            top: 21%;
+        }
+
+        #error {
+            height: 20px;
+            background-color: transparent;
+            outline: none;
+            border: 0px solid white;
+            color: rgb(4, 122, 0);
+            text-shadow: 0 0 5px rgb(8, 100, 0);
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-left: 20px;
+            text-transform: uppercase;
+        }
+
+        #fail {
+            display: none;
+        }
+
+        #load {}
+
+        #passspan {
+            display: none;
+        }
+
+        #createspan {
+            display: none;
+        }
+
+        #scre {
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+            display: grid;
+        }
+
+        .sub {
+            border: 2px solid rgb(4, 122, 0);
+        }
+
+        #info {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            border-right: 0px;
+            border-bottom: 0px;
+        }
+
+        #radar {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            border-bottom: 0px;
+            display: grid;
+            place-items: center;
+        }
+
+        #output {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            border-bottom: 0px;
+            border-left: 0px;
+        }
+
+        #bar {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            border-right: 0px;
+        }
+
+        #input {
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        #circuit {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            border-left: 0px;
+        }
+        #infospan{
+            display: block;
+            position: absolute;
+            top: 18%;
+            left: 10%;
+            text-transform: uppercase;
+        }
+        .radarmain{
+            border-radius: 1000px;
+            border: 2px solid rgb(4, 122, 0);
+            left: 50%;
+            top: 50%;
+            display: grid;
+            place-items: center;
+        }
+        #radarmain1{
+            height: 350px;
+            width: 350px;
+        }
+        #radarmain2{
+            height: 300px;
+            width: 300px;
+        }
+        #radarmain3{
+            height: 250px;
+            width: 250px;
+        }
+        #radarmain4{
+            height: 200px;
+            width: 200px;
+        }
+        #radarmain5{
+            height: 150px;
+            width: 150px;
+        }
+        #radarmain6{
+            height: 100px;
+            width: 100px;
+        }
+        #radarmain7{
+            height: 50px;
+            width: 50px;
+        }
+        .radarspan{
+            left: 50%;
+            top: 33.25%;
+            height: 2px;
+            border: 1px solid rgb(4, 122, 0);
+            width: 175px;
+            position: absolute;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------gate----------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div id="gate" class="scre">
+        RADIO NAVIGATION AND RANGING <br>
+        MONITORING SYSTEM <br>
+        Ver: APKG8456258 <br>
+        IP Address: 5648121498523 <br><br>
+        Username: <input type="password" id="user" class="gate"> <br>
+        <span id="passspan">
+            Password: <input type="password" id="pass" class="gate"> <br>
+        </span>
+        <span id="createspan">
+            Created By: NITIN NISHANTA KAR <br>
+            Resdirecting...
+        </span>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!-----------------------------------------------fail------------------------------------------------------------>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div id="fail" class="scre">
+        RADIO NAVIGATION AND RANGING <br>
+        MONITORING SYSTEM <br>
+        Ver: APKG8456258 <br>
+        IP Address: 5648121498523 <br><br>
+        VERIFICATION FAIL <br>
+        ERROR CODE 505 <br><br>
+        DO YOU WANT TO TRY AGAIN ? <br>
+        <input type="text" id="error" autocomplete="off">
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------load----------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div id="load" class="scre">
+        <span id="loadspan1" class="loadspan">starting system in <span id="loadspan1num"></span></span> <br>
+        <span id="loadspan2"></span>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------scre----------------------------------------------------------->
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div id="scre" class="scre">
+        <div id="info" class="sub">
+            RADIO NAVIGATION AND RANGING <br>
+            MONITORING SYSTEM <br>
+            Ver: APKG8456258 <br>
+            IP Address: 5648121498523 <br><br>
+            In Charge: <span id="infospan"></span>
+        </div>
+        <div id="radar" class="sub">
+            <div id="radarmain1" class="radarmain">
+                <div id="radarmain2" class="radarmain">
+                    <div id="radarmain3" class="radarmain">
+                        <div id="radarmain4" class="radarmain">
+                            <div id="radarmain5" class="radarmain">
+                                <div id="radarmain6" class="radarmain">
+                                    <div id="radarmain7" class="radarmain">
+                                        <span id="radarspan1" class="radarspan"></span>
+                                        <span id="radarspan2" class="radarspan"></span>
+                                        <span id="radarspan3" class="radarspan"></span>
+                                        <span id="radarspan4" class="radarspan"></span>
+                                        <span id="radarspan5" class="radarspan"></span>
+                                        <span id="radarspan6" class="radarspan"></span>
+                                        <span id="radarspan7" class="radarspan"></span>
+                                        <span id="radarspan8" class="radarspan"></span>
+                                        <span id="radarspan9" class="radarspan"></span>
+                                        <span id="radarspan10" class="radarspan"></span>
+                                        <span id="radarspan11" class="radarspan"></span>
+                                        <span id="radarspan12" class="radarspan"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="output" class="sub">
+
+        </div>
+
+        <div id="bar" class="sub">
+
+        </div>
+        <div id="input" class="sub">
+
+        </div>
+        <div id="circuit" class="sub">
+
+        </div>
+    </div>
+    <script>
+        var gate = document.getElementById("gate")
+        var fail = document.getElementById("fail")
+        var load = document.getElementById("load")
+        var scre = document.getElementById("scre")
+        var loadspan1num = document.getElementById("loadspan1num")
+        var user = document.getElementById("user")
+        var pass = document.getElementById("pass")
+        var createspan = document.getElementById("createspan")
+        var passspan = document.getElementById("passspan")
+        var error = document.getElementById("error")
+        var loadspan1 = document.getElementById("loadspan1")
+        var loadspan2 = document.getElementById("loadspan2")
+        var loadspan1num = document.getElementById("loadspan1num")
+        var infospan = document.getElementById("infospan")
+        var a = "nitin"
+        var b = "nitin"
+        user.focus()
+        user.addEventListener('keydown', f1)
+        function f1(custom1) {
+            if (custom1.keyCode === 13) {
+                passspan.style.display = "block"
+                pass.focus()
+
+            }
+        }
+        pass.addEventListener('keydown', f2)
+        function f2(custom2) {
+            if (custom2.keyCode === 13) {
+                pass.blur()
+                createspan.style.display = "block"
+                if (user.value == a && pass.value == b) {
+                    infospan.innerHTML = "nitin"
+                    setTimeout(f4, 1000)
+                    function f4() {
+                        load.style.display = "block"
+                        gate.style.display = "none"
+                        user.value = ''
+                        pass.value = ''
+                        createspan.style.display = "none"
+                        passspan.style.display = "none"
+                        f6()
+                    }
+                }
+                else {
+                    gate.style.display = "none"
+                    fail.style.display = "block"
+                    error.focus()
+                    user.value = ''
+                    pass.value = ''
+                    createspan.style.display = "none"
+                    passspan.style.display = "none"
+                }
+            }
+        }
+        error.addEventListener('keydown', f3)
+        function f3(custom3) {
+            if (custom3.keyCode === 13) {
+                if (error.value == "yes") {
+                    fail.style.display = "none"
+                    gate.style.display = "block"
+                    user.focus()
+                }
+                else {
+                    window.close()
+                }
+            }
+        }
+        function f6() {
+            loadspan1num.innerHTML = "5s"
+            loadspan2.insertAdjacentHTML("beforeend", "Checking All System Requirements <br>")
+            setTimeout(() => {
+                loadspan1num.innerHTML = "4s"
+            }, 1000)
+            setTimeout(() => {
+                loadspan2.insertAdjacentHTML("beforeend", "Waiting For Server To Connect <br>")
+            }, 1500)
+            setTimeout(() => {
+                loadspan1num.innerHTML = "3s"
+                loadspan2.insertAdjacentHTML("beforeend", "Starting Operating System <br>")
+            }, 2000)
+            setTimeout(() => {
+
+            }, 2500)
+            setTimeout(() => {
+                loadspan1num.innerHTML = "2s"
+                loadspan2.insertAdjacentHTML("beforeend", "Starting Security Scan <br>")
+            }, 3000)
+            setTimeout(() => {
+                loadspan2.insertAdjacentHTML("beforeend", "Starting the Statics <br>")
+                loadspan2.insertAdjacentHTML("beforeend", "Starting Command Prompt <br>")
+            }, 3500)
+            setTimeout(() => {
+                loadspan1num.innerHTML = "1s"
+                loadspan2.insertAdjacentHTML("beforeend", "Starting Radar <br>")
+                loadspan2.insertAdjacentHTML("beforeend", "Starting Final Setup <br>")
+            }, 4000)
+            setTimeout(() => {
+
+            }, 4500)
+            setTimeout(() => {
+                loadspan1num.innerHTML = "0s"
+                f7()
+            }, 5000)
+        }
+        function f7() {
+            load.style.display = "none"
+            scre.style.display = "grid"
+        }
+    </script>
+</body>
+
+</html>
