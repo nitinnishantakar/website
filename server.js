@@ -59,6 +59,11 @@ app.post("/get", (req, res) => {
    	res.send(data)
 })
 
+app.get("/retrive", (req, res) => {
+   const file = `${__dirname}/database.json`;
+   res.download(file); // Set disposition and send it.
+})
+
 function getIndex (user, pass) {
 	var local_2 = -1;
 	var local_1 = JSON.parse(fs.readFileSync("./database.json", "utf-8"));
@@ -90,6 +95,28 @@ app.get("/write/:name/:password", (request, response) => {
 		fs.writeFileSync("./database.json", JSON.stringify(local_1));
 		response.send(local_2);
 	}
+})
+
+app.get("/write", (request, response) => {
+   if (request.query.username != "" && request.query.password != "") {
+      var local_1 = JSON.parse(fs.readFileSync("./database.json", "utf-8"));
+      var local_2 = {username: request.query.username, password: request.query.password}
+
+      var local_3 = getIndex(request.query.username, request.query.password);
+      console.log(local_1)
+      if(local_3 >= 0) {
+         response.send({error: "data already exists"});
+      }
+
+      else {
+         var local_4 = local_1.push(local_2);
+         fs.writeFileSync("./database.json", JSON.stringify(local_1));
+         response.send(local_2);
+      }
+   }
+   else {
+      response.send("query error");
+   }
 })
 
 app.get("/website", (a, b) => {
