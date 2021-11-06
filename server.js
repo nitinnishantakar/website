@@ -13,6 +13,13 @@ app.get("/", (request, response) => {
     response.send("http://localhost:3000/static/clock.png");
 })
 
+app.get("/get", (req, res) => {
+	var static_1 = fs.readFileSync("./database.json", "utf-8");
+   	static_1 = JSON.parse(static_1);
+
+   	res.send(static_1);
+})
+
 app.get("/get/:name/:password", (request, response) => {
     var static_1 = fs.readFileSync("./database.json", "utf-8");
    	static_1 = JSON.parse(static_1);
@@ -49,7 +56,7 @@ app.post("/get", (req, res) => {
 
    		}
    	}	
-   	response.send(data)
+   	res.send(data)
 })
 
 function getIndex (user, pass) {
