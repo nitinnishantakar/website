@@ -14,6 +14,8 @@ app.get("/", (request, response) => {
 })
 
 app.get("/get", (req, res) => {
+   res.setHeader('Access-Control-Allow-Origin', '*');
+
 	var static_1 = fs.readFileSync("./database.json", "utf-8");
    	static_1 = JSON.parse(static_1);
 
@@ -21,6 +23,8 @@ app.get("/get", (req, res) => {
 })
 
 app.get("/get/:name/:password", (request, response) => {
+      response.setHeader('Access-Control-Allow-Origin', '*');
+
     var static_1 = fs.readFileSync("./database.json", "utf-8");
    	static_1 = JSON.parse(static_1);
    	
@@ -41,6 +45,8 @@ app.get("/get/:name/:password", (request, response) => {
 })
 
 app.post("/get", (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
 	var static_1 = fs.readFileSync("./database.json", "utf-8");
    	static_1 = JSON.parse(static_1);
    	
@@ -60,6 +66,8 @@ app.post("/get", (req, res) => {
 })
 
 app.get("/retrive", (req, res) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+
    const file = `${__dirname}/database.json`;
    res.download(file); // Set disposition and send it.
 })
@@ -81,6 +89,8 @@ function getIndex (user, pass) {
 }
 
 app.get("/write/:name/:password", (request, response) => {
+      response.setHeader('Access-Control-Allow-Origin', '*');
+
 	var local_1 = JSON.parse(fs.readFileSync("./database.json", "utf-8"));
 	var local_2 = {username: request.params.name, password: request.params.password}
 
@@ -98,6 +108,9 @@ app.get("/write/:name/:password", (request, response) => {
 })
 
 app.get("/write", (request, response) => {
+   response.setHeader('Access-Control-Allow-Origin', '*');
+
+
    if (request.query.username != "" && request.query.password != "") {
       var local_1 = JSON.parse(fs.readFileSync("./database.json", "utf-8"));
       var local_2 = {username: request.query.username, password: request.query.password}
